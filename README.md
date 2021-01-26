@@ -3,4 +3,4 @@
 
 maven { url 'https://jitpack.io' }
 
-implementation 'com.github.savesherry:aggregate-project:Tag'
+implementation 'com.github.savesherry:aggregate-project:1.0.0'
