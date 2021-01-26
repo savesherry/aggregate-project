@@ -1,11 +1,8 @@
 package com.example.aggregateproject;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-import com.example.aggregate_methods.tools.loading.ProgressHelper;
-import com.example.aggregate_methods.tools.loading.ProgressWheel;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,6 +11,5 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ProgressHelper.show(this);
     }
 }
