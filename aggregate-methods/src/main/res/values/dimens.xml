@@ -58,7 +58,5 @@
     - <!--  radius-->
     <dimen name="radius_3">3dp</dimen>
     <dimen name="radius_5">5dp</dimen>
-    <dimen name="radius_7">7dp</dimen>
     <dimen name="radius_10">10dp</dimen>
-    <dimen name="radius_50">50dp</dimen>
 </resources>
