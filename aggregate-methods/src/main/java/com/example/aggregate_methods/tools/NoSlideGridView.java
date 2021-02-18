@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.GridView;
 
 /**
- * CREATE BY liyang
+ * CREATE BY LiYang
  * ON 2021-01-26
  * SUPPLY : Thanks for watching
  */

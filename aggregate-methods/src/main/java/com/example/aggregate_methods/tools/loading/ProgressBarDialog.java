@@ -6,6 +6,12 @@ import android.os.Bundle;
 
 import com.example.aggregate_methods.R;
 
+/**
+ * CREATE BY LiYang
+ * ON 2021-01-27
+ * SUPPLY : Thanks for watching
+ */
+
 public class ProgressBarDialog extends ProgressDialog {
 
     private Context context;

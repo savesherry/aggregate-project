@@ -10,7 +10,7 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.request.RequestOptions;
 
 /**
- * CREATE BY liyang
+ * CREATE BY LiYang
  * ON 2021-01-27
  * SUPPLY : Thanks for watching
  */

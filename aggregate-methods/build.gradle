@@ -4,7 +4,6 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
-
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 29
@@ -26,6 +25,10 @@ android {
         }
     }
 
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -33,4 +36,5 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'com.hjq:xxpermissions:9.8'
 }

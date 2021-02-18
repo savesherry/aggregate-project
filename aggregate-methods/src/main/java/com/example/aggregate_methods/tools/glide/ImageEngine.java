@@ -6,7 +6,7 @@ import android.net.Uri;
 import android.widget.ImageView;
 
 /**
- * CREATE BY liyang
+ * CREATE BY LiYang
  * ON 2021-01-27
  * SUPPLY : Thanks for watching
  */

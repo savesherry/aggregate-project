@@ -4,6 +4,12 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.view.KeyEvent;
 
+/**
+ * CREATE BY LiYang
+ * ON 2021-01-27
+ * SUPPLY : Thanks for watching
+ */
+
 public class ProgressHelper {
 
     private static ProgressBarDialog dialog;

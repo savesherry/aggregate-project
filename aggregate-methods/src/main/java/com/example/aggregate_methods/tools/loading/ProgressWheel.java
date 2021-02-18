@@ -17,6 +17,12 @@ import com.example.aggregate_methods.R;
 
 import androidx.annotation.NonNull;
 
+/**
+ * CREATE BY LiYang
+ * ON 2021-01-27
+ * SUPPLY : Thanks for watching
+ */
+
 public class ProgressWheel extends View {
 
     private static final String TAG = ProgressWheel.class.getSimpleName();
