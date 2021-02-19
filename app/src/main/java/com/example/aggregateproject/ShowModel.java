@@ -1,6 +1,6 @@
 package com.example.aggregateproject;
 
-import com.example.aggregate_methods.dialog.SingleChoiceModel;
+import com.example.aggregate_methods.dialog.single.bottom.SingleChoiceModel;
 
 /**
  * CREATE BY liyang

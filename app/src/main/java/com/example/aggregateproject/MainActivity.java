@@ -3,10 +3,9 @@ package com.example.aggregateproject;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.example.aggregate_methods.dialog.SingleChoiceDialog;
+import com.example.aggregate_methods.dialog.single.bottom.SingleChoiceDialog;
 import com.example.aggregate_methods.tools.permissions.ConstantPermission;
 import com.example.aggregate_methods.tools.permissions.PermissionCallback;
 import com.example.aggregate_methods.tools.permissions.RequestPermissions;

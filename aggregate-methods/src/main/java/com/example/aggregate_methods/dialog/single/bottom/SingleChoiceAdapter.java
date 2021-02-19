@@ -1,4 +1,4 @@
-package com.example.aggregate_methods.dialog;
+package com.example.aggregate_methods.dialog.single.bottom;
 
 import android.content.Context;
 import android.view.LayoutInflater;
