@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--主题颜色 可变动 -->
+    <color name="title_color">#35CB68</color>
     <!--透明 -->
     <color name="transparent">#00000000</color>
     <!-- 淡灰色 -->
     <color name="light_gray">#646464</color>
+    <!-- 淡灰色 -->
+    <color name="light_gray_1">#D3CFCF</color>
     <!--白色 -->
     <color name="white">#FFFFFF</color>
+    <!-- 黑色 -->
+    <color name="black">#000000</color>
 </resources>

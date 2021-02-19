@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="progress_bar_dialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <!-- 边框 -->
@@ -13,5 +14,16 @@
         <!-- 背景透明 -->
         <item name="android:backgroundDimEnabled">false</item>
         <!-- 模糊 -->
+    </style>
+
+    <style name="gray_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.8dp</item>
+        <item name="android:background">@color/light_gray_1</item>
+    </style>
+
+    <style name="AnimBottom">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
     </style>
 </resources>

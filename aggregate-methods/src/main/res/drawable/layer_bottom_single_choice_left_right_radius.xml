@@ -1,0 +1,26 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- This is the main color -->
+    <item>
+        <shape>
+            <corners
+                android:topLeftRadius="5dp"
+                android:topRightRadius="5dp" />
+            <!-- 边框颜色 -->
+            <solid android:color="@color/title_color" />
+        </shape>
+    </item>
+    <!-- 给View的上 左  右设置8dp的边框 -->
+    <item
+        android:bottom="0dp"
+        android:left="1dp"
+        android:right="1dp"
+        android:top="1dp">
+        <shape>
+            <corners
+                android:topLeftRadius="5dp"
+                android:topRightRadius="5dp" />
+            <!-- View填充颜色 -->
+            <solid android:color="@color/title_color" />
+        </shape>
+    </item>
+</layer-list>
