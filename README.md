@@ -5,7 +5,6 @@ maven { url 'https://jitpack.io' }
 implementation 'com.github.savesherry:aggregate-project:1.0.3'
 
 
-
 ### 等待loading
 
 ##### 展示
@@ -20,7 +19,7 @@ implementation 'com.github.savesherry:aggregate-project:1.0.3'
             public void onMultiClick(View v) {
 
             }
-        });
+            });
 
 ### 底部弹框
 
