@@ -1,16 +1,19 @@
 # aggregate-project
-第一次提交代码  单独提交关于Logger的相关方法
 
 maven { url 'https://jitpack.io' }
 
 implementation 'com.github.savesherry:aggregate-project:1.0.3'
 
-等待loading
 
-展示：ProgressHelper.show(this);
-取消：ProgressHelper.hide();
 
-####防点击按钮多次点击
+### 等待loading
+
+##### 展示
+            ProgressHelper.show(this);
+##### 取消
+            ProgressHelper.hide();
+
+### 防点击按钮多次点击
 
             button.setOnClickListener(new OnMultiClickListener() {
             @Override
@@ -19,7 +22,7 @@ implementation 'com.github.savesherry:aggregate-project:1.0.3'
             }
         });
 
-底部弹框
+### 底部弹框
 
             dialog = new SingleChoiceDialog(this, list, "标题位置");
             dialog.setListener(position -> {
@@ -27,7 +30,7 @@ implementation 'com.github.savesherry:aggregate-project:1.0.3'
             });
             dialog.show(parentLayout);
 
-请求权限
+### 请求权限
 
             RequestPermissions.obtainPermission(this, ConstantPermission.ACCESS_FINE_LOCATION, new PermissionCallback() {
             @Override
@@ -39,4 +42,4 @@ implementation 'com.github.savesherry:aggregate-project:1.0.3'
             public void onFailure() {
                 Toast.makeText(MainActivity.this, "不同意", Toast.LENGTH_SHORT).show();
             }
-        });
+            });
