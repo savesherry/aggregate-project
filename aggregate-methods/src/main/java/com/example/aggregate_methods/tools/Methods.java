@@ -24,7 +24,6 @@ import java.util.LinkedList;
  * SUPPLY : Thanks for watching
  */
 public class Methods {
-
     /**
      * 获取当前时间戳
      *
@@ -189,7 +188,7 @@ public class Methods {
      * @param activity
      */
 
-    public static void keyboardBack(Activity activity) {
+    public static void isKeyboardBack(Activity activity) {
         View v = activity.getWindow().peekDecorView();
         if (v != null && v.getWindowToken() != null) {
             InputMethodManager imm = (InputMethodManager) activity.getSystemService(activity.INPUT_METHOD_SERVICE);

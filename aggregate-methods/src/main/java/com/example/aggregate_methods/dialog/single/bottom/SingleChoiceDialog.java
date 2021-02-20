@@ -8,23 +8,23 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.example.aggregate_methods.R;
+import com.example.aggregate_methods.tools.MaxListView;
 
 import java.util.List;
 
 /**
- * CREATE BY liyang
+ * CREATE BY LiYang
  * ON 2021-02-19
  * SUPPLY : Thanks for watching
  */
 public class SingleChoiceDialog extends PopupWindow implements AdapterView.OnItemClickListener {
 
     private View mFilterView;
-    private ListView listView;
+    private MaxListView listView;
     private TextView filterTitle;
     private SingleChoiceAdapter adapter;
     private List<? extends SingleChoiceModel> list;
@@ -45,6 +45,7 @@ public class SingleChoiceDialog extends PopupWindow implements AdapterView.OnIte
 
         filterTitle.setText(title);
         adapter.setList(list);
+        listView.setListViewHeight(800);
 
         listView.setOnItemClickListener(this);
 
