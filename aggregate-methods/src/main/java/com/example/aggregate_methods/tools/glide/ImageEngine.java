@@ -21,6 +21,25 @@ public interface ImageEngine {
     void loadImage(Context context, ImageView imageView, Object path);
 
     /**
+     * 获取网络图片实际的长宽
+     *
+     * @param context
+     * @param imageView
+     * @param path
+     */
+    void loadImageSize(Context context, ImageView imageView, Object path, SizeEngine sizeEngine);
+
+    /**
+     * 图片加载状态(成功/失败)
+     *
+     * @param context
+     * @param imageView
+     * @param path
+     * @param stateEngine
+     */
+    void loadImageState(Context context, ImageView imageView, Object path, StateEngine stateEngine);
+
+    /**
      * 加载网络图片
      *
      * @param context

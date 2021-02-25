@@ -1,58 +1,83 @@
 package com.example.aggregateproject;
 
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.content.Intent;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 
+import com.example.aggregate_methods.base.BaseActivity;
 import com.example.aggregate_methods.dialog.single.bottom.SingleChoiceDialog;
-import com.example.aggregate_methods.tools.permissions.ConstantPermission;
-import com.example.aggregate_methods.tools.permissions.PermissionCallback;
-import com.example.aggregate_methods.tools.permissions.RequestPermissions;
+import com.example.aggregate_methods.tools.loading.ProgressHelper;
+import com.example.aggregateproject.thumbnail.ThumbnailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.appcompat.app.AppCompatActivity;
+public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 
-public class MainActivity extends AppCompatActivity {
+    private RelativeLayout parentLayout;
+    private ListView listView;
+    private List<String> list = new ArrayList<>();
+    private ItemAdapter adapter;
 
-    private SingleChoiceDialog dialog;
-    private LinearLayout parentLayout;
+    private SingleChoiceDialog singleChoiceDialog;
+    private List<SingleModel> singleList = new ArrayList<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getLayout() {
+        return R.layout.activity_main;
+    }
 
-        RequestPermissions.obtainPermission(this, ConstantPermission.ACCESS_FINE_LOCATION, new PermissionCallback() {
-            @Override
-            public void onSuccess() {
-                Toast.makeText(MainActivity.this, "同意", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure() {
-                Toast.makeText(MainActivity.this, "不同意", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        Button button = findViewById(R.id.button);
+    @Override
+    protected void initView() {
         parentLayout = findViewById(R.id.parentLayout);
-        button.setOnClickListener(v -> {
-            List<ShowModel> list = new ArrayList<>();
-            for (int i = 0; i < 5; i++) {
-                ShowModel model = new ShowModel();
-                model.setId(i + "");
-                model.setName(i + "这是对应的name");
-                list.add(model);
-            }
+        listView = findViewById(R.id.listView);
+    }
 
-            dialog = new SingleChoiceDialog(this, list, "标题位置");
-            dialog.setListener(position -> {
-                Toast.makeText(MainActivity.this, "点击事件" + position, Toast.LENGTH_SHORT).show();
-            });
-            dialog.show(parentLayout);
-        });
+    @Override
+    protected void initData() {
+        adapter = new ItemAdapter(this);
+        listView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void setListener() {
+        listView.setOnItemClickListener(this);
+    }
+
+    @Override
+    protected void setNerWork() {
+        for (String item : CustomConstant.itemName) {
+            list.add(item);
+        }
+        adapter.setList(list);
+
+        for (int i = 0; i < 5; i++) {
+            SingleModel model = new SingleModel();
+            model.setName("展示选项卡" + i);
+            singleList.add(model);
+
+        }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        switch (position) {
+            case 0:
+                ProgressHelper.show(this);
+                break;
+            case 1:
+                break;
+            case 2:
+                singleChoiceDialog = new SingleChoiceDialog(MainActivity.this, singleList, "标题位置");
+                singleChoiceDialog.setListener(v -> {
+                });
+                singleChoiceDialog.show(parentLayout);
+                break;
+            case 3:
+                startActivity(new Intent(this, ThumbnailActivity.class));
+                break;
+        }
     }
 }

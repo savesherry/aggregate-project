@@ -7,12 +7,14 @@ import android.content.Intent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
+import com.example.aggregate_methods.tools.Logger;
+
 import java.util.ArrayList;
 
 /**
  * CREATE BY LiYang
  * Tool for transition between two activities
- *
+ * <p>
  * ON 2021-02-24
  * SUPPLY : Thanks for watching
  */
@@ -124,6 +126,7 @@ public class ActivityTransition {
                             view.getLocationOnScreen(location);
                             view.setPivotX(0);
                             view.setPivotY(0);
+                            Logger.e("长度设置", attr.width + ":" + view.getWidth());
                             view.setScaleX(attr.width / view.getWidth());
                             view.setScaleY(attr.height / view.getHeight());
                             view.setTranslationX(attr.startX - location[0]); // xDelta

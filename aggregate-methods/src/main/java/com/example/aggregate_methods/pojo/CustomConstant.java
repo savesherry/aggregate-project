@@ -6,4 +6,5 @@ package com.example.aggregate_methods.pojo;
  * SUPPLY : Thanks for watching
  */
 public class CustomConstant {
+
 }

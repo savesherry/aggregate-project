@@ -6,7 +6,9 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.File;
@@ -223,6 +225,33 @@ public class Methods {
             return true;
         } else {
             return false;
+        }
+    }
+
+    /**
+     * 图片根据imageView的最短边进行等比例缩小
+     *
+     * @param imageView 展示的imageView
+     * @param width     图片实际的宽度
+     * @param height    图片实际的高度
+     */
+    public static void imageViewScale(ImageView imageView, int width, int height) {
+        if (imageView.getWidth() <= imageView.getHeight() || imageView.getHeight() == 0) {
+            int imageViewWidth = imageView.getWidth();
+            float sy = (float) (imageViewWidth * 0.1) / (float) (width * 0.1);
+            //计算图片等比例放大后的高
+            int imageViewHeight = (int) (height * sy);
+            ViewGroup.LayoutParams params = imageView.getLayoutParams();
+            params.height = imageViewHeight;
+            imageView.setLayoutParams(params);
+        } else {
+            int imageViewHeight = imageView.getHeight();
+            float sy = (float) (imageViewHeight * 0.1) / (float) (height * 0.1);
+            //计算图片等比例放大后的高
+            int imageViewWidth = (int) (width * sy);
+            ViewGroup.LayoutParams params = imageView.getLayoutParams();
+            params.width = imageViewWidth;
+            imageView.setLayoutParams(params);
         }
     }
 }
