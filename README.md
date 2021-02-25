@@ -2,7 +2,7 @@
 
 maven { url 'https://jitpack.io' }
 
-implementation 'com.github.savesherry:aggregate-project:1.0.3'
+implementation 'com.github.savesherry:aggregate-project:1.0.4'
 
 
 ### 等待loading
