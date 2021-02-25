@@ -42,3 +42,22 @@ implementation 'com.github.savesherry:aggregate-project:1.0.3'
                 Toast.makeText(MainActivity.this, "不同意", Toast.LENGTH_SHORT).show();
             }
             });
+            
+### 图片缩略图
+
+            GlideEngine.instantiation().loadImageSize(this, imageView, CustomConstant.imagePath,
+                (width, height) -> {
+                    Methods.imageViewScale(imageView, width, height);
+                });
+                
+### 缩略图放大功能
+
+            Intent intent = new Intent(ThumbnailActivity.this, EnlargeActivity.class);
+            intent.putExtra("imagePath", CustomConstant.imagePath);
+            // ready for transition options
+            ActivityTransitionOptions options =
+                    ActivityTransitionOptions.makeTransitionOptions(
+                            ThumbnailActivity.this,
+                            findViewById(R.id.imageView));
+            // start transition
+            ActivityTransition.startActivity(intent, options);
