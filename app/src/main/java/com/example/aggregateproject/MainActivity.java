@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import com.example.aggregate_methods.base.BaseActivity;
 import com.example.aggregate_methods.dialog.single.bottom.SingleChoiceDialog;
 import com.example.aggregate_methods.tools.loading.ProgressHelper;
+import com.example.aggregate_methods.tools.search.SearchActivity;
 import com.example.aggregateproject.thumbnail.ThumbnailActivity;
 
 import java.util.ArrayList;
@@ -77,6 +78,9 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 break;
             case 3:
                 startActivity(new Intent(this, ThumbnailActivity.class));
+                break;
+            case 5:
+                startActivity(new Intent(this, SearchActivity.class));
                 break;
         }
     }

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/all_HW_55"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/all_MP_10"
+    android:paddingTop="@dimen/all_MP_10"
+    android:paddingBottom="@dimen/all_MP_10">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/all_MP_6"
+        android:layout_toStartOf="@+id/cancelBtn"
+        android:background="@drawable/shape_search_solid_gray_50">
+
+        <RelativeLayout
+            android:id="@+id/searchIcon"
+            style="@style/search_title_relativeLayout">
+
+            <ImageView
+                style="@style/search_title_image"
+                app:srcCompat="@drawable/ic_search" />
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/searchEdit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/all_HW_35"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/deleteIcon"
+            android:layout_toEndOf="@+id/searchIcon"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:textCursorDrawable="@drawable/shape_cursor_style"
+            android:textSize="@dimen/text_size_14" />
+
+        <RelativeLayout
+            android:id="@+id/deleteIcon"
+            style="@style/search_title_relativeLayout"
+            android:layout_alignParentEnd="true"
+            android:visibility="gone">
+
+            <ImageView
+                style="@style/search_title_image"
+                app:srcCompat="@drawable/ic_delete" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/cancelBtn"
+        android:layout_width="@dimen/all_HW_60"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="@color/light_black_1"
+        android:textSize="@dimen/text_size_16" />
+
+</RelativeLayout>

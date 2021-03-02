@@ -8,8 +8,16 @@
     <color name="light_gray">#646464</color>
     <!-- 淡灰色 -->
     <color name="light_gray_1">#D3CFCF</color>
+    <!-- 淡灰色 -->
+    <color name="light_gray_2">#F4F4F4</color>
+    <!-- 淡灰色 -->
+    <color name="light_gray_3">#999999</color>
     <!--白色 -->
     <color name="white">#FFFFFF</color>
     <!-- 黑色 -->
     <color name="black">#000000</color>
+    <!-- 黑色 -->
+    <color name="light_black_1">#505050</color>
+
+
 </resources>
