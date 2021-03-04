@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:alpha="0.6"
-        android:background="@drawable/shape_progress_solid_5"
+        android:background="@drawable/shape_radius_10_solid_light_gray"
         android:padding="@dimen/all_MP_10">
 
         <com.example.aggregate_methods.tools.loading.ProgressWheel

@@ -22,7 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
-    private String TAG = "Activity名称：";
+    public String TAG = getClass().getSimpleName() + "：";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

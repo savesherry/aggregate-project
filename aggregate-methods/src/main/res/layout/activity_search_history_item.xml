@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_marginStart="@dimen/all_MP_10"
+    android:layout_marginTop="@dimen/all_MP_6"
+    android:layout_marginBottom="@dimen/all_MP_6"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/itemTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_radius_5_solid_light_gray_2"
+        android:padding="@dimen/all_MP_10" />
+
+</RelativeLayout>
