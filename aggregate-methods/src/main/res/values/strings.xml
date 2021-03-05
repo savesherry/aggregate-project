@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">aggregate-methods</string>
+    <string name="search_title">搜索历史</string>
 </resources>

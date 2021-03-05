@@ -11,8 +11,10 @@ import android.widget.TextView;
 
 import com.example.aggregate_methods.R;
 import com.example.aggregate_methods.base.BaseActivity;
+import com.example.aggregate_methods.tools.FileUtils;
 import com.example.aggregate_methods.tools.Methods;
 import com.example.aggregate_methods.tools.search.adapter.SearchAdapter;
+import com.example.aggregate_methods.tools.storage.FileStorage;
 import com.google.android.flexbox.AlignItems;
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexWrap;
@@ -20,7 +22,6 @@ import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,6 +37,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     private EditText searchEdit;
     private List<String> list = new ArrayList<>();
     private SearchAdapter adapter;
+    private FileStorage<String> storage;
 
     @Override
     protected int getLayout() {
@@ -52,6 +54,8 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     protected void initData() {
+        storage = new FileStorage<>(FileUtils.getCacheDirectory(this, "") + "searchHistory");
+
         adapter = new SearchAdapter(this);
         recyclerView.setAdapter(adapter);
 
@@ -74,13 +78,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     protected void setNerWork() {
-        for (int i = 0; i < 10; i++) {
-            if (i % 2 == 0) {
-                list.add("这是历史记录" + i);
-            } else {
-                list.add("数字" + i);
-            }
-        }
+        list = storage.read();
         adapter.setList(list);
     }
 
@@ -118,6 +116,9 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void onHistory(int position) {
+        if (position != 0)
+            list.add(0, list.remove(position));
+        adapter.setList(list);
     }
 
     @Override
@@ -134,7 +135,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         if (list.contains(searchEdit.getText().toString().trim())) {
             for (int i = 0; i < list.size(); i++) {
                 if (TextUtils.equals(list.get(i), searchEdit.getText().toString())) {
-                    Collections.swap(list, i, 0);
+                    list.add(0, list.remove(i));
                 }
             }
         } else {
@@ -144,5 +145,11 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             list.add(0, searchEdit.getText().toString().trim());
         }
         adapter.setList(list);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        storage.write(list);
     }
 }
