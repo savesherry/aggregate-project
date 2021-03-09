@@ -19,6 +19,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * CREATE BY LiYang
@@ -253,6 +255,32 @@ public class Methods {
             params.width = imageViewWidth;
             imageView.setLayoutParams(params);
         }
+    }
+
+    /**
+     * 搜索内容的关键字
+     *
+     * @param title
+     * @param keyword
+     * @return
+     */
+    public static String matcherSearchTitle(String title, String keyword) {
+        String content = title;
+        String wordReg = "(?i)" + keyword;//用(?i)来忽略大小写
+        StringBuffer sb = new StringBuffer();
+        Matcher matcher = Pattern.compile(wordReg).matcher(content);
+        while (matcher.find()) {
+            //这样保证了原文的大小写没有发生变化
+            matcher.appendReplacement(sb, "<font color=\"#ff0014\">" + matcher.group() + "</font>");
+        }
+        matcher.appendTail(sb);
+        content = sb.toString();
+        Logger.i("Utils", content);
+        //如果匹配和替换都忽略大小写,则可以用以下方法
+        //content = content.replaceAll(wordReg,"<font color=\"#ff0014\">"+keyword+"</font>");
+        Logger.i("Utils", content);
+        return content;
+
     }
 }
 

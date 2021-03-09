@@ -6,19 +6,12 @@
 
     <include layout="@layout/include_search_title" />
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/search_title"
-        android:paddingStart="@dimen/all_MP_10"
-        android:paddingTop="@dimen/all_MP_6"
-        android:paddingBottom="@dimen/all_MP_6"
-        android:textColor="@color/light_black_1"
-        android:textSize="@dimen/text_size_16"
-        android:textStyle="bold" />
+        android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <include layout="@layout/include_search_history" />
+
+        <include layout="@layout/include_search_conduct" />
+    </RelativeLayout>
 </LinearLayout>

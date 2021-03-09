@@ -1,6 +1,7 @@
 package com.example.aggregateproject;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -12,7 +13,9 @@ import com.example.aggregate_methods.tools.loading.ProgressHelper;
 import com.example.aggregate_methods.tools.search.SearchActivity;
 import com.example.aggregateproject.thumbnail.ThumbnailActivity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener {
@@ -80,7 +83,13 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 startActivity(new Intent(this, ThumbnailActivity.class));
                 break;
             case 5:
-                startActivity(new Intent(this, SearchActivity.class));
+                List<String> conductList = new ArrayList<>();
+                conductList.addAll(Arrays.asList(CustomConstant.conductList));
+                Intent intent = new Intent(this, SearchActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("conductList", (Serializable) conductList);
+                intent.putExtras(bundle);
+                startActivity(intent);
                 break;
         }
     }

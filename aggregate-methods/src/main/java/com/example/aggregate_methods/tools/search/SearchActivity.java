@@ -6,6 +6,8 @@ import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -13,7 +15,8 @@ import com.example.aggregate_methods.R;
 import com.example.aggregate_methods.base.BaseActivity;
 import com.example.aggregate_methods.tools.FileUtils;
 import com.example.aggregate_methods.tools.Methods;
-import com.example.aggregate_methods.tools.search.adapter.SearchAdapter;
+import com.example.aggregate_methods.tools.search.adapter.ConductAdapter;
+import com.example.aggregate_methods.tools.search.adapter.HistoryAdapter;
 import com.example.aggregate_methods.tools.storage.FileStorage;
 import com.google.android.flexbox.AlignItems;
 import com.google.android.flexbox.FlexDirection;
@@ -26,17 +29,21 @@ import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import static com.example.aggregate_methods.tools.search.adapter.SearchAdapter.OnHistoryListener;
+import static com.example.aggregate_methods.tools.search.adapter.HistoryAdapter.OnHistoryListener;
 
 public class SearchActivity extends BaseActivity implements View.OnClickListener, TextWatcher, OnHistoryListener,
         View.OnKeyListener {
 
     private RecyclerView recyclerView;
-    private RelativeLayout deleteIcon;
+    private ListView listView;
+    private RelativeLayout deleteIcon, conductLayout;
+    private LinearLayout historyLayout;
     private TextView cancelBtn;
     private EditText searchEdit;
-    private List<String> list = new ArrayList<>();
-    private SearchAdapter adapter;
+    private List<String> conductList = new ArrayList<>();//搜索结果
+    private List<String> historyList = new ArrayList<>();//历史记录
+    private HistoryAdapter historyAdapter;
+    private ConductAdapter conductAdapter;
     private FileStorage<String> storage;
 
     @Override
@@ -47,17 +54,26 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     @Override
     protected void initView() {
         recyclerView = findViewById(R.id.recyclerView);
+        listView = findViewById(R.id.listView);
         searchEdit = findViewById(R.id.searchEdit);
         deleteIcon = findViewById(R.id.deleteIcon);
         cancelBtn = findViewById(R.id.cancelBtn);
+
+        historyLayout = findViewById(R.id.historyLayout);
+        conductLayout = findViewById(R.id.conductLayout);
     }
 
     @Override
     protected void initData() {
+        conductList = (List<String>) getIntent().getSerializableExtra("conductList");
+
         storage = new FileStorage<>(FileUtils.getCacheDirectory(this, "") + "searchHistory");
 
-        adapter = new SearchAdapter(this);
-        recyclerView.setAdapter(adapter);
+        historyAdapter = new HistoryAdapter(this);
+        recyclerView.setAdapter(historyAdapter);
+
+        conductAdapter = new ConductAdapter(this);
+        listView.setAdapter(conductAdapter);
 
         FlexboxLayoutManager manager = new FlexboxLayoutManager(this);
         manager.setFlexWrap(FlexWrap.WRAP);
@@ -73,13 +89,13 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         deleteIcon.setOnClickListener(this);
         searchEdit.addTextChangedListener(this);
         searchEdit.setOnKeyListener(this);
-        adapter.setHistoryListener(this);
+        historyAdapter.setHistoryListener(this);
     }
 
     @Override
     protected void setNerWork() {
-        list = storage.read();
-        adapter.setList(list);
+        historyList = storage.read();
+        historyAdapter.setList(historyList);
     }
 
     /**
@@ -107,18 +123,24 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     }
 
     @Override
-    public void afterTextChanged(Editable s) {
-        if (s.length() > 0)
+    public void afterTextChanged(Editable editable) {
+        if (editable.length() > 0) {
             deleteIcon.setVisibility(View.VISIBLE);
-        else
+            conductLayout.setVisibility(View.VISIBLE);
+
+            conductAdapter.setList(conductList, editable.toString());
+
+        } else {
             deleteIcon.setVisibility(View.GONE);
+            conductLayout.setVisibility(View.GONE);
+        }
     }
 
     @Override
     public void onHistory(int position) {
         if (position != 0)
-            list.add(0, list.remove(position));
-        adapter.setList(list);
+            historyList.add(0, historyList.remove(position));
+        historyAdapter.setList(historyList);
     }
 
     @Override
@@ -132,24 +154,24 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     }
 
     private void displaceList() {
-        if (list.contains(searchEdit.getText().toString().trim())) {
-            for (int i = 0; i < list.size(); i++) {
-                if (TextUtils.equals(list.get(i), searchEdit.getText().toString())) {
-                    list.add(0, list.remove(i));
+        if (historyList.contains(searchEdit.getText().toString().trim())) {
+            for (int i = 0; i < historyList.size(); i++) {
+                if (TextUtils.equals(historyList.get(i), searchEdit.getText().toString())) {
+                    historyList.add(0, historyList.remove(i));
                 }
             }
         } else {
-            if (list.size() >= 10) {
-                list.remove(list.size() - 1);
+            if (historyList.size() >= 10) {
+                historyList.remove(historyList.size() - 1);
             }
-            list.add(0, searchEdit.getText().toString().trim());
+            historyList.add(0, searchEdit.getText().toString().trim());
         }
-        adapter.setList(list);
+        historyAdapter.setList(historyList);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        storage.write(list);
+        storage.write(historyList);
     }
 }

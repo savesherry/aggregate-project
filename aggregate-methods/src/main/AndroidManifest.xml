@@ -10,7 +10,7 @@
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
         <activity
             android:name=".tools.search.SearchActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+            android:windowSoftInputMode="adjustNothing|stateHidden" />
     </application>
 
 </manifest>

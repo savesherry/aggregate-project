@@ -19,13 +19,13 @@ import androidx.recyclerview.widget.RecyclerView;
  * ON 2021-03-04
  * SUPPLY : Thanks for watching
  */
-public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder> {
+public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
 
     private Context context;
     private List<String> list = new ArrayList<>();
     private OnHistoryListener listener;
 
-    public SearchAdapter(Context context) {
+    public HistoryAdapter(Context context) {
         this.context = context;
     }
 
