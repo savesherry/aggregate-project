@@ -1,6 +1,7 @@
 package com.example.aggregate_methods.tools;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -275,12 +276,23 @@ public class Methods {
         }
         matcher.appendTail(sb);
         content = sb.toString();
-        Logger.i("Utils", content);
+        Logger.i("内容：", content);
         //如果匹配和替换都忽略大小写,则可以用以下方法
         //content = content.replaceAll(wordReg,"<font color=\"#ff0014\">"+keyword+"</font>");
-        Logger.i("Utils", content);
+        Logger.i("内容：", content);
         return content;
+    }
 
+    /**
+     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
+     *
+     * @param context
+     * @param dpValue
+     * @return
+     */
+    public static int dip2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
     }
 }
 
