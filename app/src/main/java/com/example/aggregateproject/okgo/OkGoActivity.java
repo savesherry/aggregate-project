@@ -63,7 +63,6 @@ public class OkGoActivity extends BaseActivity {
 
         updateButton.setOnClickListener(v -> {
             String url = " http://218.27.1.157:9090/profile/upload/2021/03/10/a71a149c-dcf9-4e1d-95b9-c647cd092d7b.apk";
-
 //            String url = " http://218.27.1.102:9090/profile/upload/2021/03/10/a71a149c-dcf9-4e1d-95b9-c647cd092d7b.apk";
             HttpTools.download(this, url, Environment.getExternalStorageDirectory() + "/OKGO", "OkGo.apk", new DownloadResponseListener() {
                 @Override
