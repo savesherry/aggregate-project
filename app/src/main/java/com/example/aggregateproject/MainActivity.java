@@ -6,10 +6,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.aggregate_methods.base.BaseActivity;
 import com.example.aggregate_methods.dialog.single.bottom.SingleChoiceDialog;
 import com.example.aggregate_methods.tools.loading.ProgressHelper;
+import com.example.aggregate_methods.tools.permissions.ConstantPermission;
+import com.example.aggregate_methods.tools.permissions.PermissionCallback;
+import com.example.aggregate_methods.tools.permissions.RequestPermissions;
 import com.example.aggregate_methods.tools.search.SearchActivity;
 import com.example.aggregateproject.asynchronous.RxJavaActivity;
 import com.example.aggregateproject.okgo.OkGoActivity;
@@ -84,7 +88,17 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 startActivity(new Intent(this, ThumbnailActivity.class));
                 break;
             case 4:
-                startActivity(new Intent(this, OkGoActivity.class));
+                RequestPermissions.obtainPermissions(this, ConstantPermission.Group.STORAGE, new PermissionCallback() {
+                    @Override
+                    public void onSuccess() {
+                        startActivity(new Intent(MainActivity.this, OkGoActivity.class));
+                    }
+
+                    @Override
+                    public void onFailure() {
+                        Toast.makeText(MainActivity.this, "不同意", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 break;
             case 5:
                 List<String> conductList = new ArrayList<>();
