@@ -11,6 +11,8 @@ import com.example.aggregate_methods.base.BaseActivity;
 import com.example.aggregate_methods.dialog.single.bottom.SingleChoiceDialog;
 import com.example.aggregate_methods.tools.loading.ProgressHelper;
 import com.example.aggregate_methods.tools.search.SearchActivity;
+import com.example.aggregateproject.asynchronous.RxJavaActivity;
+import com.example.aggregateproject.okgo.OkGoActivity;
 import com.example.aggregateproject.thumbnail.ThumbnailActivity;
 
 import java.io.Serializable;
@@ -61,7 +63,6 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             SingleModel model = new SingleModel();
             model.setName("展示选项卡" + i);
             singleList.add(model);
-
         }
     }
 
@@ -82,6 +83,9 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             case 3:
                 startActivity(new Intent(this, ThumbnailActivity.class));
                 break;
+            case 4:
+                startActivity(new Intent(this, OkGoActivity.class));
+                break;
             case 5:
                 List<String> conductList = new ArrayList<>();
                 conductList.addAll(Arrays.asList(CustomConstant.conductList));
@@ -90,6 +94,9 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 bundle.putSerializable("conductList", (Serializable) conductList);
                 intent.putExtras(bundle);
                 startActivity(intent);
+                break;
+            case 6:
+                startActivity(new Intent(this, RxJavaActivity.class));
                 break;
         }
     }
