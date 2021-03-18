@@ -46,7 +46,6 @@ public class OkGoActivity extends BaseActivity {
                 @Override
                 public void onSuccess(JSONObject response) {
                     Logger.e(TAG, response.toString());
-
                 }
 
                 @Override
