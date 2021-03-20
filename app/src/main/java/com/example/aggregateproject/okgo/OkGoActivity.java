@@ -75,7 +75,7 @@ public class OkGoActivity extends BaseActivity {
 
                 @Override
                 public void onProgress(String downloadLength, String totalLength, String downloadSpeed, int percentage) {
-                    dialog.setProgressBar(percentage, "下载速度 " + downloadSpeed + "，请您耐心等待！");
+                    dialog.setProgressBar(percentage, "下载速度" + downloadSpeed + "，请您耐心等待！");
                 }
 
                 @Override
