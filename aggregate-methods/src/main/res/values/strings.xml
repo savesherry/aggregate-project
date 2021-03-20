@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">aggregate-methods</string>
     <string name="search_title">搜索历史</string>
+    <string name="download_connect">请在获取资源连接，请耐心等待！</string>
 </resources>

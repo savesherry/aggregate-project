@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.aggregate_methods.base.BaseActivity;
+import com.example.aggregate_methods.dialog.progress.DownloadDialog;
 import com.example.aggregate_methods.tools.Logger;
 import com.example.aggregateproject.R;
 import com.example.aggregateproject.http.DownloadResponseListener;
@@ -25,6 +26,8 @@ public class OkGoActivity extends BaseActivity {
 
     private Button requestButton, updateButton;
 
+    private DownloadDialog dialog;
+
     @Override
     protected int getLayout() {
         return R.layout.activity_okgo;
@@ -38,6 +41,7 @@ public class OkGoActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        dialog = new DownloadDialog(this);
     }
 
     @Override
@@ -63,24 +67,29 @@ public class OkGoActivity extends BaseActivity {
 
         updateButton.setOnClickListener(v -> {
             String url = " http://218.27.1.157:9090/profile/upload/2021/03/10/a71a149c-dcf9-4e1d-95b9-c647cd092d7b.apk";
-//            String url = " http://218.27.1.102:9090/profile/upload/2021/03/10/a71a149c-dcf9-4e1d-95b9-c647cd092d7b.apk";
             HttpTools.download(this, url, Environment.getExternalStorageDirectory() + "/OKGO", "OkGo.apk", new DownloadResponseListener() {
+                @Override
+                public void onStart() {
+                    dialog.setHeight(OkGoActivity.this);
+                }
+
+                @Override
+                public void onProgress(String downloadLength, String totalLength, String downloadSpeed, int percentage) {
+                    dialog.setProgressBar(percentage, "下载速度" + downloadSpeed + "，请您耐心等待！");
+                }
+
                 @Override
                 public void onFinish(File file) {
                     if (file.exists())
                         Toast.makeText(OkGoActivity.this, "当前文件下载完毕", Toast.LENGTH_SHORT).show();
                     else
                         Toast.makeText(OkGoActivity.this, "当前文件下载失败", Toast.LENGTH_SHORT).show();
-                }
-
-                @Override
-                public void onProgress(String downloadLength, String totalLength, String downloadSpeed, int percentage) {
-                    Logger.e(TAG, "下载长度" + downloadLength + "--总共长度" + totalLength + "--下载速度" + downloadSpeed + "--百分比" + String.format("%s", percentage) + "%");
+                    dialog.dismiss();
                 }
 
                 @Override
                 public void onFailure(String error) {
-
+                    dialog.dismiss();
                 }
             });
         });
@@ -90,4 +99,6 @@ public class OkGoActivity extends BaseActivity {
     protected void setNerWork() {
 
     }
+
+
 }

@@ -11,6 +11,7 @@ import com.example.aggregate_methods.request.exception.ExceptionCode;
 import com.example.aggregate_methods.request.exception.HttpException;
 import com.example.aggregate_methods.request.model.Progress;
 import com.example.aggregate_methods.request.model.Response;
+import com.example.aggregate_methods.request.pattern.base.Request;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -77,6 +78,11 @@ public class HttpTools {
     public static void download(Context context, String url, String fileDir, String fileName, DownloadResponseListener listener) {
         OkGo.<File>get(url).tag(context)
                 .execute(new FileCallback(fileDir, fileName) {
+                    @Override
+                    public void onStart(Request<File, ? extends Request> request) {
+                        listener.onStart();
+                    }
+
                     @Override
                     public void downloadProgress(Progress progress) {
                         listener.onProgress(Formatter.formatFileSize(context, progress.currentSize),

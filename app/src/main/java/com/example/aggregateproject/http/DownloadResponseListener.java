@@ -9,10 +9,14 @@ import java.io.File;
  */
 public interface DownloadResponseListener {
 
-    void onFinish(File file);
+    default void onStart() {
+    }
 
     void onProgress(String downloadLength, String totalLength, String downloadSpeed, int percentage);
 
+    void onFinish(File file);
+
     void onFailure(String error);
+
 
 }
