@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.animation.Transformation;
 import android.view.animation.TranslateAnimation;
 
-import com.example.aggregate_methods.tools.Logger;
-
 /**
  * CREATE BY LiYang
  * ON 2021-03-20
