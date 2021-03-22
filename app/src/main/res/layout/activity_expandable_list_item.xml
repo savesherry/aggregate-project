@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.aggregate_methods.tools.expandable.ExpandableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/expandableLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/all_HW_50"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:text="这是头布局">
+
+        <TextView
+            android:id="@+id/itemTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/all_MP_10"
+            android:text="这是头布局" />
+
+        <ImageView
+            android:id="@+id/arrowRight"
+            android:layout_width="@dimen/all_HW_60"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:padding="@dimen/all_HW_15"
+            android:tag="arrowRight"
+            app:srcCompat="@drawable/ic_arrow" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/itemContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/all_MP_10" />
+
+</com.example.aggregate_methods.tools.expandable.ExpandableLayout>

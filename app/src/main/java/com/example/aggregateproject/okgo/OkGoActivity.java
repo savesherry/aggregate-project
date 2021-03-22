@@ -99,6 +99,4 @@ public class OkGoActivity extends BaseActivity {
     protected void setNerWork() {
 
     }
-
-
 }

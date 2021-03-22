@@ -16,6 +16,7 @@ import com.example.aggregate_methods.tools.permissions.PermissionCallback;
 import com.example.aggregate_methods.tools.permissions.RequestPermissions;
 import com.example.aggregate_methods.tools.search.SearchActivity;
 import com.example.aggregateproject.asynchronous.RxJavaActivity;
+import com.example.aggregateproject.expandable.ExpandableActivity;
 import com.example.aggregateproject.okgo.OkGoActivity;
 import com.example.aggregateproject.thumbnail.ThumbnailActivity;
 
@@ -111,6 +112,9 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 break;
             case 6:
                 startActivity(new Intent(this, RxJavaActivity.class));
+                break;
+            case 7:
+                startActivity(new Intent(this, ExpandableActivity.class));
                 break;
         }
     }
