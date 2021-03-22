@@ -30,6 +30,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // 禁用横屏
         setContentView(getLayout());
+        ActivityCollector.addActivity(this);
         Logger.v(TAG, getClass().getSimpleName());
         initBase();
     }
@@ -56,6 +57,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     //请求
     protected abstract void setNerWork();
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivityCollector.removeActivity(this);
+    }
 
     /**
      * 判断是否连接网络
