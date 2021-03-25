@@ -1,4 +1,6 @@
-package com.example.aggregate_methods.tools;
+package com.example.aggregate_methods.tools.utils;
+
+import com.example.aggregate_methods.tools.Logger;
 
 import java.io.File;
 

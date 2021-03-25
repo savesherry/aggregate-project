@@ -1,8 +1,10 @@
-package com.example.aggregate_methods.tools;
+package com.example.aggregate_methods.tools.utils;
 
 import android.content.Context;
 import android.os.Environment;
 import android.text.TextUtils;
+
+import com.example.aggregate_methods.tools.Logger;
 
 import java.io.File;
 

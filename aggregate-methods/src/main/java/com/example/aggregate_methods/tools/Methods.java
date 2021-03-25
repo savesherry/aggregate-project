@@ -2,6 +2,8 @@ package com.example.aggregate_methods.tools;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -316,6 +318,68 @@ public class Methods {
         ViewGroup.LayoutParams params = listView.getLayoutParams();
         params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         listView.setLayoutParams(params);
+    }
+
+    /**
+     * 判断电话号码正则表达式
+     *
+     * @param mobiles
+     * @return
+     */
+    public static boolean isMobileNO(String mobiles) {
+        Pattern p = Pattern.compile("^((13[0-9])|(15[^4,//D])|(18[0,5-9]))//d{8}$");
+        Matcher m = p.matcher(mobiles);
+        return m.matches();
+    }
+
+    /**
+     * 身份证号校验
+     *
+     * @param idCard
+     * @return
+     */
+    public static boolean isIdCardNO(String idCard) {
+        String reg = "^\\d{15}$|^\\d{17}[0-9Xx]$";
+        if (!idCard.matches(reg)) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 获取当前版本号
+     *
+     * @param context
+     * @return
+     */
+    public static String getAppVersionCode(Context context) {
+        int versioncode = 0;
+        try {
+            PackageManager pm = context.getPackageManager();
+            PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
+            versioncode = pi.versionCode;
+        } catch (Exception e) {
+            Logger.e("VersionInfo", "Exception" + e.getMessage());
+        }
+        return versioncode + "";
+    }
+
+    /**
+     * 获取当前版本名称
+     *
+     * @param context
+     * @return
+     */
+    public static String getAppVersionName(Context context) {
+        String versionName = null;
+        try {
+            PackageManager pm = context.getPackageManager();
+            PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
+            versionName = pi.versionName;
+        } catch (Exception e) {
+            Logger.e("VersionInfo", "Exception" + e.getMessage());
+        }
+        return versionName;
     }
 }
 

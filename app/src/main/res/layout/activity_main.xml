@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.example.aggregate_methods.tools.MoveImageView
+    <com.example.aggregate_methods.tools.views.MoveImageView
         android:id="@+id/qiuImage"
         android:layout_width="65dp"
         android:layout_height="65dp"

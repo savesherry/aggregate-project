@@ -21,7 +21,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_16" />
 
-        <com.example.aggregate_methods.tools.MaxListView
+        <com.example.aggregate_methods.tools.views.MaxListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

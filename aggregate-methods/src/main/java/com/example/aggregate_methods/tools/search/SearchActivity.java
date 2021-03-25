@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.example.aggregate_methods.R;
 import com.example.aggregate_methods.base.BaseActivity;
-import com.example.aggregate_methods.tools.FileUtils;
+import com.example.aggregate_methods.tools.utils.FileUtils;
 import com.example.aggregate_methods.tools.Methods;
 import com.example.aggregate_methods.tools.search.adapter.ConductAdapter;
 import com.example.aggregate_methods.tools.search.adapter.HistoryAdapter;

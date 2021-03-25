@@ -1,4 +1,4 @@
-package com.example.aggregate_methods.tools;
+package com.example.aggregate_methods.tools.views;
 
 import android.content.Context;
 import android.util.AttributeSet;

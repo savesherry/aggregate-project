@@ -12,7 +12,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.example.aggregate_methods.R;
-import com.example.aggregate_methods.tools.MaxListView;
+import com.example.aggregate_methods.tools.views.MaxListView;
 
 import java.util.List;
 
