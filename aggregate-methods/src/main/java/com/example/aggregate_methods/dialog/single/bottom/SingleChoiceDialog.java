@@ -21,16 +21,16 @@ import java.util.List;
  * ON 2021-02-19
  * SUPPLY : Thanks for watching
  */
-public class SingleChoiceDialog extends PopupWindow implements AdapterView.OnItemClickListener {
+public class SingleChoiceDialog<T extends SingleChoiceModel> extends PopupWindow implements AdapterView.OnItemClickListener {
 
     private View mFilterView;
     private MaxListView listView;
     private TextView filterTitle;
     private SingleChoiceAdapter adapter;
-    private List<? extends SingleChoiceModel> list;
+    private List<T> list;
     private onChoiceListener listener;
 
-    public SingleChoiceDialog(Context context, List<? extends SingleChoiceModel> list, String title) {
+    public SingleChoiceDialog(Context context, List<T> list, String title) {
         this.list = list;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 

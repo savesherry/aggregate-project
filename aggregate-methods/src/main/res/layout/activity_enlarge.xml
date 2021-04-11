@@ -5,10 +5,11 @@
     android:alpha="0.8"
     android:background="@color/black">
 
-    <ImageView
+    <com.example.aggregate_methods.tools.views.PinchImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
         android:layout_centerInParent="true" />
 
 </RelativeLayout>

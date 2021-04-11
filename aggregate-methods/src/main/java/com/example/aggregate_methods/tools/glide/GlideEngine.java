@@ -49,7 +49,7 @@ public class GlideEngine implements ImageEngine {
     }
 
     @Override
-    public void loadImageSize(Context context, ImageView imageView, Object path, SizeEngine sizeEngine) {
+    public void loadImageSize(Context context, ImageView imageView, Object path, @Nullable SizeEngine sizeEngine) {
         Glide.with(context)
                 .asBitmap()
                 .load(path)

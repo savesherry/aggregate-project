@@ -5,11 +5,14 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Environment;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
@@ -122,74 +125,6 @@ public class Methods {
         return date;
     }
 
-    /**
-     * 创建文件
-     *
-     * @param filePath
-     */
-    public static void createFile(String filePath) {
-        File dir = new File(filePath);
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-    }
-
-    /**
-     * 循环路径的文件夹
-     *
-     * @param filePath
-     * @return
-     */
-    public static LinkedList<File> folderFiles(String filePath) {
-        LinkedList<File> list = new LinkedList<>();
-        File docFile = new File(filePath);
-        File[] fileArray = docFile.listFiles();
-        for (File f : fileArray) {
-            if (f.isFile()) {
-                list.add(f);
-            }
-        }
-        return list;
-    }
-
-    /**
-     * 拷贝文件到对应的目录
-     *
-     * @param path
-     * @param copyPath
-     * @return
-     */
-
-    public static boolean copyFile(String path, String copyPath) {
-        try {
-            createFile(copyPath);
-            File oldFile = new File(path);
-            File newFile = new File(copyPath + "/" + oldFile.getName());
-            if (!newFile.exists()) {
-                newFile.createNewFile();
-            }
-            try {
-                //获得原文件流
-                FileInputStream inputStream = new FileInputStream(oldFile);
-                byte[] data = new byte[1024];
-                //输出流
-                FileOutputStream outputStream = new FileOutputStream(newFile);
-                //开始处理流
-                while (inputStream.read(data) != -1) {
-                    outputStream.write(data);
-                }
-                inputStream.close();
-                outputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-                return false;
-            }
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
 
     /**
      * 键盘回收
@@ -292,7 +227,7 @@ public class Methods {
      *
      * @param context
      * @param dpValue
-     * @return
+     * @return 单位
      */
     public static int dip2px(Context context, float dpValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
@@ -324,7 +259,7 @@ public class Methods {
      * 判断电话号码正则表达式
      *
      * @param mobiles
-     * @return
+     * @return boolean
      */
     public static boolean isMobileNO(String mobiles) {
         Pattern p = Pattern.compile("^((13[0-9])|(15[^4,//D])|(18[0,5-9]))//d{8}$");
@@ -336,7 +271,7 @@ public class Methods {
      * 身份证号校验
      *
      * @param idCard
-     * @return
+     * @return boolean
      */
     public static boolean isIdCardNO(String idCard) {
         String reg = "^\\d{15}$|^\\d{17}[0-9Xx]$";
@@ -350,10 +285,11 @@ public class Methods {
      * 获取当前版本号
      *
      * @param context
-     * @return
+     * @return 版本号
      */
     public static String getAppVersionCode(Context context) {
-        int versioncode = 0;
+        //默认版本为1
+        int versioncode = 1;
         try {
             PackageManager pm = context.getPackageManager();
             PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
@@ -368,10 +304,11 @@ public class Methods {
      * 获取当前版本名称
      *
      * @param context
-     * @return
+     * @return 版本名称
      */
     public static String getAppVersionName(Context context) {
-        String versionName = null;
+        //默认最初版本
+        String versionName = "1.0.0";
         try {
             PackageManager pm = context.getPackageManager();
             PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
@@ -380,6 +317,132 @@ public class Methods {
             Logger.e("VersionInfo", "Exception" + e.getMessage());
         }
         return versionName;
+    }
+
+    /**
+     * 获取当前手机宽度
+     *
+     * @param activity
+     * @return 宽度
+     */
+    public static int getPhoneWidth(Activity activity) {
+        WindowManager manager = activity.getWindowManager();
+        DisplayMetrics metrics = new DisplayMetrics();
+        manager.getDefaultDisplay().getMetrics(metrics);
+        return metrics.widthPixels;
+    }
+
+    /**
+     * 获取当前手机高度
+     *
+     * @param activity
+     * @return 高度
+     */
+    public static int getPhoneHeight(Activity activity) {
+        WindowManager manager = activity.getWindowManager();
+        DisplayMetrics metrics = new DisplayMetrics();
+        manager.getDefaultDisplay().getMetrics(metrics);
+        return metrics.heightPixels;
+    }
+
+    /**
+     * 判断当前手机没有SD卡，或者SD正好被移除情况
+     *
+     * @return boolean
+     */
+    public static boolean obtainSDCardState() {
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
+                || !Environment.isExternalStorageRemovable())
+            return true;
+        else
+            return false;
+    }
+
+    /**
+     * 获取disk缓存文件路径，默认在/sdcard/Android/data/<application package>/cache
+     * 当不存在或者移除SD卡时直接存储到/data/data/<application package>/cache
+     *
+     * @param context
+     * @param fileName
+     * @return
+     */
+    public static File getDiskCacheDir(Context context, String fileName) {
+        String cachePath;
+        if (obtainSDCardState()) {
+            cachePath = context.getExternalCacheDir().getPath();
+        } else {
+            cachePath = context.getCacheDir().getPath();
+        }
+        return new File(cachePath + File.separator + fileName);
+    }
+
+    /**
+     * 创建文件
+     *
+     * @param filePath
+     */
+    public static void createFile(String filePath) {
+        File dir = new File(filePath);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+    }
+
+    /**
+     * 循环路径的文件夹
+     *
+     * @param filePath
+     * @return
+     */
+    public static LinkedList<File> folderFiles(String filePath) {
+        LinkedList<File> list = new LinkedList<>();
+        File docFile = new File(filePath);
+        File[] fileArray = docFile.listFiles();
+        for (File f : fileArray) {
+            if (f.isFile()) {
+                list.add(f);
+            }
+        }
+        return list;
+    }
+
+    /**
+     * 拷贝文件到对应的目录
+     *
+     * @param path
+     * @param copyPath
+     * @return
+     */
+
+    public static boolean copyFile(String path, String copyPath) {
+        try {
+            createFile(copyPath);
+            File oldFile = new File(path);
+            File newFile = new File(copyPath + "/" + oldFile.getName());
+            if (!newFile.exists()) {
+                newFile.createNewFile();
+            }
+            try {
+                //获得原文件流
+                FileInputStream inputStream = new FileInputStream(oldFile);
+                byte[] data = new byte[1024];
+                //输出流
+                FileOutputStream outputStream = new FileOutputStream(newFile);
+                //开始处理流
+                while (inputStream.read(data) != -1) {
+                    outputStream.write(data);
+                }
+                inputStream.close();
+                outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
 

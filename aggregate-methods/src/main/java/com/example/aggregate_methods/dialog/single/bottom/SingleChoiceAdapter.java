@@ -19,16 +19,16 @@ import java.util.List;
  * ON 2021-02-19
  * SUPPLY : Thanks for watching
  */
-public class SingleChoiceAdapter extends BaseAdapter {
+public class SingleChoiceAdapter<T extends SingleChoiceModel> extends BaseAdapter {
 
     private LayoutInflater inflater;
-    private List<? extends SingleChoiceModel> list = new ArrayList<>();
+    private List<T> list = new ArrayList<>();
 
     public SingleChoiceAdapter(Context context) {
         inflater = LayoutInflater.from(context);
     }
 
-    public void setList(List<? extends SingleChoiceModel> list) {
+    public void setList(List<T> list) {
         this.list = list;
         notifyDataSetChanged();
     }
