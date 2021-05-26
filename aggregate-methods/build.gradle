@@ -15,6 +15,10 @@ android {
         consumerProguardFiles 'consumer-rules.pro'
     }
 
+    dataBinding {
+        enabled = true
+    }
+
     buildTypes {
         debug {
             buildConfigField("boolean", "LOG_DEBUG", "true")
