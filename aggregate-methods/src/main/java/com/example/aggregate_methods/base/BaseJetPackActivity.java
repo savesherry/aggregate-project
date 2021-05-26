@@ -67,7 +67,7 @@ public abstract class BaseJetPackActivity extends AppCompatActivity {
      * @return
      */
     protected ViewDataBinding getViewDataBing() {
-        return DataBindingUtil.setContentView(this, initLayout());
+        return DataBindingUtil.setContentView( this, initLayout());
     }
 
     /**
