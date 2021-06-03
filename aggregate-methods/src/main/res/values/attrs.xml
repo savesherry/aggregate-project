@@ -33,4 +33,17 @@
             <enum name="invisible" value="1" />
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="drop_down_menu">
+        <attr name="drop_line_color" format="color" />
+        <attr name="drop_divider_color" format="color" />
+        <attr name="drop_selected_color" format="color" />
+        <attr name="drop_unselected_color" format="color" />
+        <attr name="drop_background_color" format="color" />
+        <attr name="drop_mask_color" format="color" />
+        <attr name="drop_text_size" format="dimension" />
+        <attr name="drop_selected_icon" format="reference" />
+        <attr name="drop_unselected_icon" format="reference" />
+        <attr name="drop_height_percent" format="float" />
+    </declare-styleable>
 </resources>
