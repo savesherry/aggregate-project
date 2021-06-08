@@ -38,6 +38,7 @@ public abstract class BaseJetPackActivity extends AppCompatActivity {
     }
 
     private void initBase() {
+        initBing();
         initData();
         setListener();
         setNerWork();
@@ -45,6 +46,9 @@ public abstract class BaseJetPackActivity extends AppCompatActivity {
 
     //布局
     protected abstract int initLayout();
+
+    //初始化绑定
+    protected abstract void initBing();
 
     //数据
     protected abstract void initData();
