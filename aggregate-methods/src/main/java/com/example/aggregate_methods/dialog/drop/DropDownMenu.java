@@ -186,7 +186,7 @@ public class DropDownMenu extends LinearLayout {
     }
 
     /**
-     *  返回标头高度
+     * 返回标头高度
      *
      * @return
      */
