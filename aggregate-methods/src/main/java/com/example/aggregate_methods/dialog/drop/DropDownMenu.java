@@ -188,7 +188,7 @@ public class DropDownMenu extends LinearLayout {
     /**
      * 返回标头高度
      *
-     * @return
+     *  @return
      */
     public int getTabMenuView() {
         return tabMenuView.getHeight();
