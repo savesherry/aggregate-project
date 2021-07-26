@@ -89,6 +89,7 @@ public class DropDownMenu extends LinearLayout {
         tabMenuView = new LinearLayout(context);
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         tabMenuView.setOrientation(HORIZONTAL);
+        tabMenuView.setGravity(Gravity.CENTER_VERTICAL);
         tabMenuView.setBackgroundColor(menuBackgroundColor);
         tabMenuView.setLayoutParams(params);
         addView(tabMenuView, 0);
