@@ -47,7 +47,6 @@ public class DropDownMenu extends LinearLayout {
     private int maskColor = 0x88888888;
     //tab字体大小
     private int menuTextSize = 14;
-
     //tab选中图标
     private int menuSelectedIcon;
     //tab未选中图标
