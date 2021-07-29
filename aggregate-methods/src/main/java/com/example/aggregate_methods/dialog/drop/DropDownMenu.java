@@ -81,7 +81,7 @@ public class DropDownMenu extends LinearLayout {
         maskColor = a.getColor(R.styleable.drop_down_menu_drop_mask_color, maskColor);
         menuTextSize = a.getDimensionPixelSize(R.styleable.drop_down_menu_drop_text_size, menuTextSize);
         menuSelectedIcon = a.getResourceId(R.styleable.drop_down_menu_drop_selected_icon, menuSelectedIcon);
-        menuUnselectedIcon = a.getResourceId(R.styleable.drop_down_menu_drop_selected_icon, menuUnselectedIcon);
+        menuUnselectedIcon = a.getResourceId(R.styleable.drop_down_menu_drop_unselected_icon, menuUnselectedIcon);
         menuHeighPercent = a.getFloat(R.styleable.drop_down_menu_drop_height_percent, menuHeighPercent);
         a.recycle();
 
