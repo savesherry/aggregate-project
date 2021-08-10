@@ -27,7 +27,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField("boolean", "LOG_DEBUG", "true")
+            buildConfigField("boolean", "LOG_DEBUG", "false")
             buildConfigField("long", "TRANSITION_DURATION", "800")
         }
     }
