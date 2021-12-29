@@ -204,6 +204,7 @@ public class ConstantPermission {
          * 位置权限
          */
         public static final String[] LOCATION = new String[]{
+                ConstantPermission.READ_PHONE_STATE,
                 ConstantPermission.ACCESS_FINE_LOCATION,
                 ConstantPermission.ACCESS_COARSE_LOCATION,
                 ConstantPermission.ACCESS_BACKGROUND_LOCATION};
