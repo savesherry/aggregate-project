@@ -201,7 +201,7 @@ public class ConstantPermission {
                 ConstantPermission.WRITE_EXTERNAL_STORAGE};
 
         /**
-         * 位置权限
+         * 位置权限(添加了获取手机状态)
          */
         public static final String[] LOCATION = new String[]{
                 ConstantPermission.READ_PHONE_STATE,
