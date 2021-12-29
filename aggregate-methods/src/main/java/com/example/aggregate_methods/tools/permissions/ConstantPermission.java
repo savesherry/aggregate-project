@@ -205,9 +205,7 @@ public class ConstantPermission {
          */
         public static final String[] LOCATION = new String[]{
                 ConstantPermission.READ_PHONE_STATE,
-                ConstantPermission.ACCESS_FINE_LOCATION,
-                ConstantPermission.ACCESS_COARSE_LOCATION,
-                ConstantPermission.ACCESS_BACKGROUND_LOCATION};
+                ConstantPermission.ACCESS_FINE_LOCATION};
 
         /**
          * 日历权限
