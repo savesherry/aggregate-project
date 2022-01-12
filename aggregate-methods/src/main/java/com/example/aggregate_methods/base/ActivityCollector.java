@@ -11,7 +11,7 @@ import java.util.List;
  * SUPPLY : Thanks for watching
  */
 public class ActivityCollector {
-    private static List<Activity> list = new ArrayList<>();
+    public static List<Activity> list = new ArrayList<>();
 
     public static void addActivity(Activity activity) {
         list.add(activity);
